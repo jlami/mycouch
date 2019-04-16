@@ -1,7 +1,6 @@
 public class BuildConfig
 {
     private const string Version = "7.1.0";
-    private const bool IsPreRelease = false;
 
     public readonly string SrcDir = "./source/";
     public readonly string ArtifactsDir = "./artifacts/";    
@@ -19,13 +18,16 @@ public class BuildConfig
         if (context == null)
             throw new ArgumentNullException("context");
 
-        var buildRevision = context.Argument("buildrevision", "0");
+        var buildRevision = context.EnvironmentVariable("Build.BuildNumber", "0");
+        var isFork = context.EnvironmentVariable("System.PullRequest.IsFork", false);
+        var branchName = context.EnvironmentVariable("Build.SourceBranchName", string.Empty).ToLowerInvariant();
+        var isPreRelease = branchName != "master" || isFork;
 
         return new BuildConfig
         {
             Target = context.Argument("target", "Default"),
-            SemVer = Version + (IsPreRelease ? $"-pre{buildRevision}" : string.Empty),
-            BuildVersion = Version + "." + buildRevision,
+            SemVer = Version + (isPreRelease ? $"-pre{buildRevision}" : string.Empty),
+            BuildVersion = $"{Version}.{buildRevision}",
             BuildProfile = context.Argument("configuration", "Release")
         };
     }
