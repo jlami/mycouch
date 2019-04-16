@@ -18,9 +18,9 @@ public class BuildConfig
         if (context == null)
             throw new ArgumentNullException("context");
 
-        var buildRevision = context.EnvironmentVariable("Build.BuildNumber", "0");
-        var isFork = context.EnvironmentVariable("System.PullRequest.IsFork", false);
-        var branchName = context.EnvironmentVariable("Build.SourceBranchName", string.Empty).ToLowerInvariant();
+        var buildRevision = context.EnvironmentVariable("build.buildNumber", "0");
+        var isFork = context.EnvironmentVariable("system.pullRequest.isFork", false);
+        var branchName = context.EnvironmentVariable("build.sourceBranchName", string.Empty).ToLowerInvariant();
         var isPreRelease = branchName != "master" || isFork;
 
         return new BuildConfig
