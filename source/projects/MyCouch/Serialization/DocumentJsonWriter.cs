@@ -71,10 +71,11 @@ namespace MyCouch.Serialization
             base.WriteEndObject();
         }
 
-        public override void WriteNull()
-        {
-            base.WriteRaw(string.Empty);
-        }
+        //public override void WriteNull()
+        //{
+
+        //    base.WriteRaw("null");// string.Empty);
+        //}
 
         public override void WritePropertyName(string name)
         {

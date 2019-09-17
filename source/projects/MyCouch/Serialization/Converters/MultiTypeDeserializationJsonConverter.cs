@@ -19,10 +19,10 @@ namespace MyCouch.Serialization.Converters
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if (objectType == typeof(string))
-                return ReadJsonAsString(reader);
+            //if (objectType == typeof(object))
+            //    return ReadJsonAsString(reader);
 
-            if (objectType == typeof(string[]))
+            if (objectType == typeof(object[]))
                 return ReadJsonAsStringArray(reader);
 
             var documentJsonReader = reader as DocumentJsonReader;

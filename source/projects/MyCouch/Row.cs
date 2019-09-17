@@ -4,16 +4,16 @@ using MyCouch.Extensions;
 
 namespace MyCouch
 {
-    public class Row : Row<string, string>
+    public class Row : Row<object, object>
     {
-        public Row(string id, object key, string value, string includedDoc)
+        public Row(string id, object key, object value, object includedDoc)
             : base(id, key, value, includedDoc)
         { }
     }
 
-    public class Row<TValue> : Row<TValue, string>
+    public class Row<TValue> : Row<TValue, object>
     {
-        public Row(string id, object key, TValue value, string includedDoc)
+        public Row(string id, object key, TValue value, object includedDoc)
             : base(id, key, value, includedDoc)
         { }
     }

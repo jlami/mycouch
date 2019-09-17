@@ -6,9 +6,9 @@ using Newtonsoft.Json;
 
 namespace MyCouch.Responses
 {
-    public class ViewQueryResponse : ViewQueryResponse<string> { }
+    public class ViewQueryResponse : ViewQueryResponse<object> { }
 
-    public class ViewQueryResponse<TValue> : ViewQueryResponse<TValue, string> { }
+    public class ViewQueryResponse<TValue> : ViewQueryResponse<TValue, object> { }
 
     public class ViewQueryResponse<TValue, TIncludedDoc> : Response
     {
