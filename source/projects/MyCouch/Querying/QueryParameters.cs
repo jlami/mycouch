@@ -19,7 +19,7 @@ namespace MyCouch.Querying
         public object[] Keys { get; set; }
         public bool HasKeys
         {
-            get { return Keys != null && Keys.Any(); }
+            get { return Keys != null; }
         }
         public object StartKey { get; set; }
         public string StartKeyDocId { get; set; }
